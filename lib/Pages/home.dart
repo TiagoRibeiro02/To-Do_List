@@ -13,6 +13,10 @@ class _home_pageState extends State<home_page> {
     return Scaffold(
       appBar: AppBar(
         title: Text('To-do'),
+        //the right one
+        actions: [],
+        //left
+        //leading: ,
       ),
     );
   }
