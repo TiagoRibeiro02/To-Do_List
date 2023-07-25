@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class home_page extends StatefulWidget {
   const home_page({super.key});
@@ -146,6 +147,31 @@ class _home_pageState extends State<home_page> {
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                    SizedBox(height: 30,),
+                    Container(
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          height: 250,
+                          aspectRatio: 1.0,
+                          enlargeCenterPage: true,
+                        ),
+                        items: [1,2,3].map((i) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                  decoration: BoxDecoration(
+                                      color: Colors.amber,
+                                    borderRadius: BorderRadius.all(Radius.circular(20))
+                                  ),
+                                  child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                              );
+                            },
+                          );
+                        }).toList(),
                       ),
                     )
                   ],
