@@ -10,7 +10,7 @@ class home_page extends StatefulWidget {
 class _home_pageState extends State<home_page> {
 
   String username = 'Tiago';
-  int tasks = 0;
+  int tasks = 10;
 
 
 
@@ -61,7 +61,7 @@ class _home_pageState extends State<home_page> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(62, 8, 50, 0),
+                      margin: EdgeInsets.fromLTRB(52, 8, 50, 0),
                       child: Row(
                         children: [
                           Expanded(
@@ -84,6 +84,7 @@ class _home_pageState extends State<home_page> {
                               ),
                             ),
                           ),
+                          SizedBox(height: 100,),
                           Expanded(
                             flex: 1,
                               child: Container(
@@ -95,7 +96,7 @@ class _home_pageState extends State<home_page> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                      margin: EdgeInsets.fromLTRB(60, 0, 50, 0),
                       child: Container(
                         margin: EdgeInsets.only(top: 20.0, left: 12),
                         child: SingleChildScrollView(
@@ -105,12 +106,39 @@ class _home_pageState extends State<home_page> {
                                   child: InkWell(
                                     onTap: () {}, //profile page
                                     child: Text(
-                                      'Hello $username',
+                                      'Hello, $username',
                                       style: TextStyle(
                                         fontSize: 30.0,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                         overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  )
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(60, 0, 50, 0),
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20.0, left: 12),
+                        child: SingleChildScrollView(
+                          child: Row(
+                            children: [
+                              Flexible(
+                                  child: InkWell(
+                                    onTap: () {}, //profile page
+                                    child: Text(
+                                      'This is your to-do list\nToday you have $tasks tasks to complete.',
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        height: 1.3,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                        overflow: TextOverflow.clip,
                                       ),
                                     ),
                                   )
