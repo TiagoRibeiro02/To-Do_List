@@ -163,6 +163,7 @@ class _home_pageState extends State<home_page> {
                               return Container(
                                   width: MediaQuery.of(context).size.width,
                                   margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                                   decoration: BoxDecoration(
                                       color: Colors.amber,
                                     borderRadius: BorderRadius.all(Radius.circular(20))
