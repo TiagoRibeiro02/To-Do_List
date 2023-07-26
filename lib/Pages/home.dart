@@ -13,6 +13,19 @@ class _home_pageState extends State<home_page> {
   String username = 'Tiago';
   int tasks = 10;
 
+  Widget buildTask(int i) {
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.symmetric(horizontal: 5.0),
+        padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+        decoration: BoxDecoration(
+            color: Colors.amber,
+            borderRadius: BorderRadius.all(Radius.circular(20))
+        ),
+        child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+    );;
+  }
+
 
 
   @override
@@ -168,20 +181,7 @@ class _home_pageState extends State<home_page> {
                               enlargeCenterPage: true,
                             ),
                             items: [1,2,3].map((i) {
-                              return Builder(
-                                builder: (BuildContext context) {
-                                  return Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                                      decoration: BoxDecoration(
-                                          color: Colors.amber,
-                                        borderRadius: BorderRadius.all(Radius.circular(20))
-                                      ),
-                                      child: Text('text $i', style: TextStyle(fontSize: 16.0),)
-                                  );
-                                },
-                              );
+                              return buildTask(i);
                             }).toList(),
                           ),
                         ),
