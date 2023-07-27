@@ -14,16 +14,49 @@ class _home_pageState extends State<home_page> {
   int tasks = 10;
 
   Widget buildTask(int i) {
-    return Container(
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.symmetric(horizontal: 5.0),
-        padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-        decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.all(Radius.circular(20))
-        ),
-        child: Text('text $i', style: TextStyle(fontSize: 16.0),)
-    );;
+    if (i == 1) {
+      return Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          margin: EdgeInsets.symmetric(horizontal: 5.0),
+          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+          decoration: BoxDecoration(
+              color: Colors.amber,
+              borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
+          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+      );
+    } else if (i == 2){
+      return Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          margin: EdgeInsets.symmetric(horizontal: 5.0),
+          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+          decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
+          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+      );
+    } else {
+      return Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          margin: EdgeInsets.symmetric(horizontal: 5.0),
+          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+          decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
+          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+      );
+    }
   }
 
 
