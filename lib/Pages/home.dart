@@ -12,6 +12,7 @@ class _home_pageState extends State<home_page> {
 
   String username = 'Tiago';
   int tasks = 10;
+  MaterialAccentColor backgroundColor = Colors.redAccent;
 
   Widget buildTask(int i) {
     if (i == 1) {
@@ -23,10 +24,49 @@ class _home_pageState extends State<home_page> {
           margin: EdgeInsets.symmetric(horizontal: 5.0),
           padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
           decoration: BoxDecoration(
-              color: Colors.amber,
+              color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(20))
           ),
-          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+          child: Column(
+            children: [
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Icon(
+                      Icons.person,
+                    color: backgroundColor = Colors.redAccent,
+                  )
+              ),
+              SizedBox(height: 100.0,),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        '$tasks Tasks',  //TODO depois o tipo de tasks
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey.withOpacity(0.6),
+
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Personal',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          color: Colors.grey[850]
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          )
       );
     } else if (i == 2){
       return Container(
@@ -105,7 +145,7 @@ class _home_pageState extends State<home_page> {
         ),
       ),
 
-      backgroundColor: Colors.cyanAccent,
+      backgroundColor: backgroundColor,
       body: Column(
         children: [
           Container(
@@ -205,7 +245,7 @@ class _home_pageState extends State<home_page> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 30,),
+                        SizedBox(height: 40,),
                         Container(
                           child: CarouselSlider(
                             options: CarouselOptions(
