@@ -14,6 +14,12 @@ class _home_pageState extends State<home_page> {
   int tasks = 10;
   Color? backgroundColor = Colors.white;
 
+  void changebgColor() {
+    setState(() {
+      backgroundColor = backgroundColor;
+    });
+  }
+
   Widget buildTask(int i) {
     if (i == 1) {
       return Container(
@@ -331,9 +337,12 @@ class _home_pageState extends State<home_page> {
                               height: 250,
                               aspectRatio: 1.0,
                               enlargeCenterPage: true,
-                              onPageChanged: setState(() {
-                                backgroundColor = backgroundColor;
-                              });
+                              onPageChanged: (ColorNumber, reason) {
+                                setState(() {
+                                  backgroundColor = backgroundColor;
+                                  //print(backgroundColor);
+                                });
+                              },
                             ),
                             items: [1,2,3].map((i) {
                               return buildTask(i);
