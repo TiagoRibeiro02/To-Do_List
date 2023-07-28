@@ -150,7 +150,7 @@ class _home_pageState extends State<home_page> {
               Align(
                   alignment: Alignment.topLeft,
                   child: Icon(
-                    Icons.person,
+                    Icons.home,
                     color: backgroundColor = Colors.green[300],
                   )
               ),
@@ -225,15 +225,16 @@ class _home_pageState extends State<home_page> {
         ),
       ),
 
-      floatingActionButton: Center(
-        child: Align(
-            alignment: AlignmentDirectional.bottomCenter,
-            child: FloatingActionButton(
-              onPressed: () {},
-              child: Icon(Icons.add),
-            )
-        ),
-      ),
+      // button to add more group of tasks
+      // floatingActionButton: Center(
+      //   child: Align(
+      //       alignment: AlignmentDirectional.bottomCenter,
+      //       child: FloatingActionButton(
+      //         onPressed: () {},
+      //         child: Icon(Icons.add),
+      //       )
+      //   ),
+      // ),
 
       backgroundColor: changebgColor(),
       body: Column(
