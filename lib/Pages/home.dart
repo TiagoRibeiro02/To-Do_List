@@ -12,7 +12,7 @@ class _home_pageState extends State<home_page> {
 
   String username = 'Tiago';
   int tasks = 10;
-  MaterialAccentColor backgroundColor = Colors.redAccent;
+  Color? backgroundColor = Colors.white;
 
   Widget buildTask(int i) {
     if (i == 1) {
@@ -33,7 +33,7 @@ class _home_pageState extends State<home_page> {
                   alignment: Alignment.topLeft,
                   child: Icon(
                       Icons.person,
-                    color: backgroundColor = Colors.redAccent,
+                    color: backgroundColor = Colors.red[300],
                   )
               ),
               SizedBox(height: 100.0,),
@@ -68,6 +68,7 @@ class _home_pageState extends State<home_page> {
             ],
           )
       );
+
     } else if (i == 2){
       return Container(
           width: MediaQuery
@@ -77,10 +78,49 @@ class _home_pageState extends State<home_page> {
           margin: EdgeInsets.symmetric(horizontal: 5.0),
           padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
           decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(20))
           ),
-          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+          child: Column(
+            children: [
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Icon(
+                    Icons.work,
+                    color: backgroundColor = Colors.blue[400],
+                  )
+              ),
+              SizedBox(height: 100.0,),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        '$tasks Tasks',  //TODO depois o tipo de tasks
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey.withOpacity(0.6),
+
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Work',
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.grey[850]
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          )
       );
     } else {
       return Container(
@@ -91,10 +131,49 @@ class _home_pageState extends State<home_page> {
           margin: EdgeInsets.symmetric(horizontal: 5.0),
           padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
           decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(20))
           ),
-          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+          child: Column(
+            children: [
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Icon(
+                    Icons.person,
+                    color: backgroundColor = Colors.red[300],
+                  )
+              ),
+              SizedBox(height: 100.0,),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        '$tasks Tasks',  //TODO depois o tipo de tasks
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey.withOpacity(0.6),
+
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Personal',
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.grey[850]
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          )
       );
     }
   }
@@ -252,6 +331,9 @@ class _home_pageState extends State<home_page> {
                               height: 250,
                               aspectRatio: 1.0,
                               enlargeCenterPage: true,
+                              onPageChanged: setState(() {
+                                backgroundColor = backgroundColor;
+                              });
                             ),
                             items: [1,2,3].map((i) {
                               return buildTask(i);
