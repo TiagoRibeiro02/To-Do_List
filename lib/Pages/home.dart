@@ -13,11 +13,16 @@ class _home_pageState extends State<home_page> {
   String username = 'Tiago';
   int tasks = 10;
   Color? backgroundColor = Colors.white;
+  int _colorNumber = 0;
 
-  void changebgColor() {
-    setState(() {
-      backgroundColor = backgroundColor;
-    });
+  Color? changebgColor() {
+    if (_colorNumber == 0){
+      return backgroundColor = Colors.red[300];
+    } else if(_colorNumber == 1){
+      return backgroundColor = Colors.blue[400];
+    } else{
+      return backgroundColor = Colors.green[300];
+    }
   }
 
   Widget buildTask(int i) {
@@ -146,7 +151,7 @@ class _home_pageState extends State<home_page> {
                   alignment: Alignment.topLeft,
                   child: Icon(
                     Icons.person,
-                    color: backgroundColor = Colors.red[300],
+                    color: backgroundColor = Colors.green[300],
                   )
               ),
               SizedBox(height: 100.0,),
@@ -230,7 +235,7 @@ class _home_pageState extends State<home_page> {
         ),
       ),
 
-      backgroundColor: backgroundColor,
+      backgroundColor: changebgColor(),
       body: Column(
         children: [
           Container(
@@ -339,8 +344,7 @@ class _home_pageState extends State<home_page> {
                               enlargeCenterPage: true,
                               onPageChanged: (ColorNumber, reason) {
                                 setState(() {
-                                  backgroundColor = backgroundColor;
-                                  //print(backgroundColor);
+                                  _colorNumber = ColorNumber;
                                 });
                               },
                             ),
