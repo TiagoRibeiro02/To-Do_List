@@ -266,6 +266,7 @@ class _home_pageState extends State<home_page> {
                                         child: CircleAvatar(
                                           radius: 30.0,
                                           backgroundColor: Colors.green,
+                                          backgroundImage: AssetImage('assets/img.jpg'),
                                         ),
                                       ),
                                     ),
