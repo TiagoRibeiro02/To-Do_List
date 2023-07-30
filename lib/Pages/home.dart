@@ -25,7 +25,7 @@ class _home_pageState extends State<home_page> {
     }
   }
 
-  Widget buildTask(int i) {
+  Widget buildTaskCategory(int i) {
     if (i == 1) {
       return Container(
           width: MediaQuery
@@ -351,7 +351,7 @@ class _home_pageState extends State<home_page> {
                               },
                             ),
                             items: [1,2,3].map((i) {
-                              return buildTask(i);
+                              return buildTaskCategory(i);
                             }).toList(),
                           ),
                         ),
