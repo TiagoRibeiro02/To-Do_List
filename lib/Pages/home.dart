@@ -215,13 +215,43 @@ class _home_pageState extends State<home_page> {
               ),
           )
         ],
-        //left
-        leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.menu,
-              size: 40.0,
+      ),
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+                child: Text('Header')
             ),
+            ListTile(
+              title: Text('My Account'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Done List'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Change Language'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Change Theme'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Feedback Wall'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {},
+            ),
+          ],
         ),
       ),
 
