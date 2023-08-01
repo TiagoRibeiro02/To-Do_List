@@ -228,26 +228,32 @@ class _home_pageState extends State<home_page> {
                 child: Text('Header')
             ),
             ListTile(
+              leading: Icon(Icons.account_circle),
               title: Text('My Account'),
               onTap: () {},
             ),
             ListTile(
+              leading: Icon(Icons.done_all),
               title: Text('Done List'),
               onTap: () {},
             ),
             ListTile(
+              leading: Icon(Icons.language),
               title: Text('Change Language'),
               onTap: () {},
             ),
             ListTile(
+              leading: Icon(Icons.palette),
               title: Text('Change Theme'),
               onTap: () {},
             ),
             ListTile(
+              leading: Icon(Icons.feed),
               title: Text('Feedback Wall'),
               onTap: () {},
             ),
             ListTile(
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {},
             ),
