@@ -223,38 +223,38 @@ class _home_pageState extends State<home_page> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                image: DecorationImage(image: AssetImage('assets/img_nav1.jpg'), fit: BoxFit.fill)
               ),
-                child: Text('Header')
+              child: Text(''),
             ),
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('My Account'),
+              title: Text('My Account', style: TextStyle(color: Colors.grey[700])),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.done_all),
-              title: Text('Done List'),
+              title: Text('Done List', style: TextStyle(color: Colors.grey[700])),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.language),
-              title: Text('Change Language'),
+              title: Text('Change Language', style: TextStyle(color: Colors.grey[700])),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.palette),
-              title: Text('Change Theme'),
+              title: Text('Change Theme', style: TextStyle(color: Colors.grey[700])),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.feed),
-              title: Text('Feedback Wall'),
+              title: Text('Feedback Wall', style: TextStyle(color: Colors.grey[700])),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              title: Text('Settings', style: TextStyle(color: Colors.grey[700])),
               onTap: () {},
             ),
           ],
