@@ -14,17 +14,7 @@ class _home_pageState extends State<home_page> {
   int tasks = 10;
   Color? backgroundColor = Colors.white;
   int _colorNumber = 0;
-
-  Color? changebgColor() {
-    if (_colorNumber == 0){
-      return backgroundColor = Colors.red[300];
-    } else if(_colorNumber == 1){
-      return backgroundColor = Colors.blue[400];
-    } else{
-      return backgroundColor = Colors.green[300];
-    }
-  }
-
+  
   Widget buildTaskCategory(int i) {
     if (i == 1) {
       return Container(
@@ -192,7 +182,7 @@ class _home_pageState extends State<home_page> {
 
 
   @override
-  Widget build(BuildContext context) {
+  build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -261,16 +251,17 @@ class _home_pageState extends State<home_page> {
         ),
       ),
 
-      // button to add more group of tasks
-      // floatingActionButton: Center(
-      //   child: Align(
-      //       alignment: AlignmentDirectional.bottomCenter,
-      //       child: FloatingActionButton(
-      //         onPressed: () {},
-      //         child: Icon(Icons.add),
-      //       )
-      //   ),
-      // ),
+      //button to add tasks faster
+      floatingActionButton: Center(
+        child: Align(
+            alignment: AlignmentDirectional.bottomCenter,
+            child: FloatingActionButton(
+              backgroundColor: backgroundColor,
+              onPressed: () {},
+              child: Icon(Icons.add),
+            )
+        ),
+      ),
 
       backgroundColor: changebgColor(),
       body: Column(
