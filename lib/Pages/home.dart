@@ -231,42 +231,42 @@ class _home_pageState extends State<home_page> {
               leading: Icon(Icons.account_circle),
               title: Text('My Account', style: TextStyle(color: Colors.grey[700])),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/nav/my_account');
+                Navigator.pushNamed(context, '/my_account');
               },
             ),
             ListTile(
               leading: Icon(Icons.done_all),
               title: Text('Done List', style: TextStyle(color: Colors.grey[700])),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/nav/done_list');
+                Navigator.pushNamed(context, '/done_list');
               },
             ),
             ListTile(
               leading: Icon(Icons.language),
               title: Text('Change Language', style: TextStyle(color: Colors.grey[700])),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/nav/change_language');
+                Navigator.pushNamed(context, '/change_language');
               },
             ),
             ListTile(
               leading: Icon(Icons.palette),
               title: Text('Change Theme', style: TextStyle(color: Colors.grey[700])),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/nav/change_theme');
+                Navigator.pushNamed(context, '/change_theme');
               },
             ),
             ListTile(
               leading: Icon(Icons.feed),
               title: Text('Feedback Wall', style: TextStyle(color: Colors.grey[700])),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/nav/feedback_wall');
+                Navigator.pushNamed(context, '/feedback_wall');
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings', style: TextStyle(color: Colors.grey[700])),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/nav/settings');
+                Navigator.pushNamed(context, '/settings');
               },
             ),
           ],

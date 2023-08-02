@@ -10,6 +10,14 @@ class My_Account extends StatefulWidget {
 class _My_AccountState extends State<My_Account> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Account'),
+        centerTitle: true,
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }

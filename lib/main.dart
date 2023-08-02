@@ -18,12 +18,12 @@ void main() {
         '/': (context) => Login(),
         '/register': (context) => Register(),
         '/home': (context)  => home_page(),
-        '/nav/change_language': (context)  => Change_Language(),
-        '/nav/change_theme': (context)  => Change_Theme(),
-        '/nav/done_list': (context)  => Done_List(),
-        '/nav/feedback_wall': (context)  => Feedback_Wall(),
-        '/nav/my_account': (context)  => My_Account(),
-        '/nav/settings': (context)  => Settings(),
+        '/my_account': (context)  => My_Account(),
+        '/change_language': (context)  => Change_Language(),
+        '/change_theme': (context)  => Change_Theme(),
+        '/done_list': (context)  => Done_List(),
+        '/feedback_wall': (context)  => Feedback_Wall(),
+        '/settings': (context)  => Settings(),
       },
     )
   );
