@@ -10,6 +10,20 @@ class Personal_Page extends StatefulWidget {
 class _Personal_PageState extends State<Personal_Page> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Personal'),
+      ),
+      body: Column(
+        children: [
+          Hero(tag: 'IconPersonal',
+            child: Icon(
+              Icons.person,
+              color: Colors.red[300],
+            ),)
+        ],
+      ),
+    );
   }
 }

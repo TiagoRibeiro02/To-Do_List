@@ -10,6 +10,20 @@ class Work_Page extends StatefulWidget {
 class _Work_PageState extends State<Work_Page> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Work'),
+      ),
+      body: Column(
+        children: [
+          Hero(tag: 'IconWork',
+            child: Icon(
+              Icons.work,
+              color: Colors.blue[400],
+            ),)
+        ],
+      ),
+    );
   }
 }

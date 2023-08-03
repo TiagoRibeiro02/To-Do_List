@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:todo_list/Lists_pages/homeList_page.dart';
+import 'package:todo_list/Lists_pages/personal_page.dart';
 
 class home_page extends StatefulWidget {
   const home_page({super.key});
@@ -15,6 +18,8 @@ class _home_pageState extends State<home_page> {
   Color? backgroundColor = Colors.white;
   int _colorNumber = 0;
 
+
+
   Color? changebgColor() {
     if (_colorNumber == 0){
       return backgroundColor = Colors.red[300];
@@ -25,166 +30,182 @@ class _home_pageState extends State<home_page> {
     }
   }
 
+
   Widget buildTaskCategory(int i) {
     if (i == 1) {
-      return Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          margin: EdgeInsets.symmetric(horizontal: 5.0),
-          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20))
-          ),
-          child: Column(
-            children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                      Icons.person,
-                    color: backgroundColor = Colors.red[300],
-                  )
-              ),
-              SizedBox(height: 100.0,),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        '$tasks Tasks',  //TODO depois o tipo de tasks
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey.withOpacity(0.6),
-
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Personal',
-                        style: TextStyle(
-                          fontSize: 30.0,
-                          color: Colors.grey[850]
-                        ),
+      return GestureDetector(
+        onTap: () {Navigator.pushNamed(context, '/personal_pages');},
+        child: Container(
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 5.0),
+            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(20))
+            ),
+            child: Column(
+              children: [
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Hero(
+                      tag: 'IconPersonal',
+                      child: Icon(
+                          Icons.person,
+                        color: backgroundColor = Colors.red[300],
                       ),
                     )
-                  ],
                 ),
-              )
-            ],
-          )
+                SizedBox(height: 100.0,),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          '$tasks Tasks',  //TODO depois o tipo de tasks
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey.withOpacity(0.6),
+
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Personal',
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.grey[850]
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+        ),
       );
 
     } else if (i == 2){
-      return Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          margin: EdgeInsets.symmetric(horizontal: 5.0),
-          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20))
-          ),
-          child: Column(
-            children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                    Icons.work,
-                    color: backgroundColor = Colors.blue[400],
-                  )
-              ),
-              SizedBox(height: 100.0,),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        '$tasks Tasks',  //TODO depois o tipo de tasks
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey.withOpacity(0.6),
-
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Work',
-                        style: TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.grey[850]
-                        ),
+      return GestureDetector(
+        onTap: () {Navigator.pushNamed(context, '/work_page');},
+        child: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            margin: EdgeInsets.symmetric(horizontal: 5.0),
+            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(20))
+            ),
+            child: Column(
+              children: [
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Hero(
+                      tag: 'IconWork',
+                      child: Icon(
+                        Icons.work,
+                        color: backgroundColor = Colors.blue[400],
                       ),
                     )
-                  ],
                 ),
-              )
-            ],
-          )
+                SizedBox(height: 100.0,),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          '$tasks Tasks',  //TODO depois o tipo de tasks
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey.withOpacity(0.6),
+
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Work',
+                          style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.grey[850]
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+        ),
       );
     } else {
-      return Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          margin: EdgeInsets.symmetric(horizontal: 5.0),
-          padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20))
-          ),
-          child: Column(
-            children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Icon(
-                    Icons.home,
-                    color: backgroundColor = Colors.green[300],
-                  )
-              ),
-              SizedBox(height: 100.0,),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        '$tasks Tasks',  //TODO depois o tipo de tasks
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey.withOpacity(0.6),
-
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Personal',
-                        style: TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.grey[850]
-                        ),
+      return GestureDetector(
+        onTap: () {Navigator.pushNamed(context, '/homeList_Page');},
+        child: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            margin: EdgeInsets.symmetric(horizontal: 5.0),
+            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(20))
+            ),
+            child: Column(
+              children: [
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Hero(
+                      tag: 'iconHome',
+                      child: Icon(
+                        Icons.home,
+                        color: backgroundColor = Colors.green[300],
                       ),
                     )
-                  ],
                 ),
-              )
-            ],
-          )
+                SizedBox(height: 100.0,),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          '$tasks Tasks',  //TODO depois o tipo de tasks
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey.withOpacity(0.6),
+
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Personal',
+                          style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.grey[850]
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+        ),
       );
     }
   }
