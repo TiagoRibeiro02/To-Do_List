@@ -18,17 +18,19 @@ class _My_AccountState extends State<My_Account> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: Column(
-        children: [
-          Hero(
-              tag: 'avatar',
-              child: CircleAvatar(
-                radius: 30.0,
-                //backgroundColor: backgroundColor,
-                backgroundImage: AssetImage('assets/img.jpg'),
-              ),
-          )
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            Hero(
+                tag: 'avatar',
+                child: CircleAvatar(
+                  radius: 30.0,
+                  //backgroundColor: backgroundColor,
+                  backgroundImage: AssetImage('assets/img.jpg'),
+                ),
+            )
+          ],
+        ),
       ),
     );
   }
