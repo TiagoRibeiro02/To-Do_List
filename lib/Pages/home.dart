@@ -306,7 +306,7 @@ class _home_pageState extends State<home_page> {
                                 child: Container(
                                   alignment: Alignment.centerLeft,
                                   child: InkWell(
-                                    onTap: () {}, //go to profile
+                                    onTap: () {Navigator.pushNamed(context, '/my_account');}, //go to profile
                                     child: Hero(
                                       tag: 'avatar',
                                       child: Container(
