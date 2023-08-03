@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/Lists_pages/homeList_page.dart';
+import 'package:todo_list/Lists_pages/personal_page.dart';
+import 'package:todo_list/Lists_pages/work_page.dart';
 import 'package:todo_list/Nav_Pages/change_language.dart';
 import 'package:todo_list/Nav_Pages/change_theme.dart';
 import 'package:todo_list/Nav_Pages/done_list.dart';
@@ -24,6 +27,9 @@ void main() {
         '/done_list': (context)  => Done_List(),
         '/feedback_wall': (context)  => Feedback_Wall(),
         '/settings': (context)  => Settings(),
+        '/personal_pages': (context)  => Personal_Page(),
+        '/work_page': (context)  => Work_Page(),
+        '/homeList_Page': (context)  => HomeList_Page(),
       },
     )
   );
