@@ -10,6 +10,14 @@ class Change_Language extends StatefulWidget {
 class _Change_LanguageState extends State<Change_Language> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Language'),
+        centerTitle: true,
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }

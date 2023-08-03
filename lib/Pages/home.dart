@@ -255,13 +255,13 @@ class _home_pageState extends State<home_page> {
                 Navigator.pushNamed(context, '/change_theme');
               },
             ),
-            ListTile(
-              leading: Icon(Icons.feed),
-              title: Text('Feedback Wall', style: TextStyle(color: Colors.grey[700])),
-              onTap: () {
-                Navigator.pushNamed(context, '/feedback_wall');
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.feed),
+            //   title: Text('Feedback Wall', style: TextStyle(color: Colors.grey[700])),
+            //   onTap: () {
+            //     Navigator.pushNamed(context, '/feedback_wall');
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings', style: TextStyle(color: Colors.grey[700])),

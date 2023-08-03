@@ -10,6 +10,14 @@ class Done_List extends StatefulWidget {
 class _Done_ListState extends State<Done_List> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Done List'),
+        centerTitle: true,
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }

@@ -10,6 +10,14 @@ class Change_Theme extends StatefulWidget {
 class _Change_ThemeState extends State<Change_Theme> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Theme'),
+        centerTitle: true,
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }
