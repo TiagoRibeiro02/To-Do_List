@@ -14,7 +14,7 @@ class Personal_Page extends StatefulWidget {
 class _Personal_PageState extends State<Personal_Page> {
 
   //reference the hive box
-  final _mybox = Hive.openBox('mybox');
+  final _mybox = Hive.box('mybox');
   ToDoDataBase db = ToDoDataBase();
 
 
