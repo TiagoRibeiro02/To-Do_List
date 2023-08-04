@@ -17,11 +17,11 @@ class ToDoDataBase{
 
   //load data from db
   void loadData() {
-    toDoList = _mybox.get('jj');
+    toDoList = _mybox.get('TODOLIST');
   }
 
   //update db
   void updateDB() {
-
+    _mybox.put('TODOLIST', toDoList);
   }
 }
