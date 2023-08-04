@@ -13,7 +13,8 @@ class ToDoTile extends StatelessWidget {
     super.key,
     required this.taskName,
     required this.taskCompleted,
-    required this.onChange
+    required this.onChange,
+    required this.deleteFunction,
   });
 
   @override
@@ -27,6 +28,7 @@ class ToDoTile extends StatelessWidget {
               onPressed: deleteFunction,
               icon: Icons.delete,
               backgroundColor: Colors.red,
+              borderRadius: BorderRadius.circular(12),
             )
         ]),
 

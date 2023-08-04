@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo_list/Data/database.dart';
 import 'package:todo_list/Util/dialog_box.dart';
 import 'package:todo_list/Util/todo_tile.dart';
 
@@ -11,24 +13,24 @@ class Personal_Page extends StatefulWidget {
 
 class _Personal_PageState extends State<Personal_Page> {
 
-  //list of todo tasks
-  List toDoList = [
-    ['Make Tutorial', false],
-    ['Do exercise', false]
-  ];
+  //reference the hive box
+  final _mybox = Hive.openBox('mybox');
+  ToDoDataBase db = ToDoDataBase();
+
+
   //text controller
   final _controler = TextEditingController();
 
   //check box tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
-      toDoList[index][1] = !toDoList[index][1];
+      db.toDoList[index][1] = !db.toDoList[index][1];
     });
   }
 
   void saveNewTask() {
     setState(() {
-      toDoList.add([_controler.text, false]);
+      db.toDoList.add([_controler.text, false]);
       _controler.clear();
     });
     Navigator.of(context).pop();
@@ -49,6 +51,12 @@ class _Personal_PageState extends State<Personal_Page> {
       );
   }
 
+  void deleteTask(int index) {
+    setState(() {
+      db.toDoList.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,12 +69,13 @@ class _Personal_PageState extends State<Personal_Page> {
         child: Icon(Icons.add),
       ),
       body: ListView.builder(
-        itemCount: toDoList.length,
+        itemCount: db.toDoList.length,
         itemBuilder: (context, index) {
           return ToDoTile(
-              taskName: toDoList[index][0],
-              taskCompleted: toDoList[index][1],
-              onChange: (value) => checkBoxChanged(value, index)
+              taskName: db.toDoList[index][0],
+              taskCompleted: db.toDoList[index][1],
+              onChange: (value) => checkBoxChanged(value, index),
+              deleteFunction: (context) => deleteTask(index) ,
           );
         },
 

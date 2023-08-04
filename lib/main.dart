@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_list/Lists_pages/homeList_page.dart';
 import 'package:todo_list/Lists_pages/personal_page.dart';
 import 'package:todo_list/Lists_pages/work_page.dart';
@@ -12,7 +13,14 @@ import 'package:todo_list/Pages/home.dart';
 import 'package:todo_list/Pages/login.dart';
 import 'package:todo_list/Pages/register.dart';
 
-void main() {
+main() async {
+
+  //init hive
+  await Hive.initFlutter();
+
+  //open a box
+  var box = await Hive.openBox('mybox');
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
