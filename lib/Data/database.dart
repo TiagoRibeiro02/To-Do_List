@@ -10,8 +10,8 @@ class ToDoDataBase{
   //run this if its the first time running this app
   void createInitialData() {
     toDoList = [
-      ['Welcome', false],
-      ['To delete, slide this task', false],
+      ['Welcome', false, 1],
+      ['To delete, slide this task', false, 1],
     ];
   }
 

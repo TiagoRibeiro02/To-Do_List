@@ -44,7 +44,7 @@ class _Personal_PageState extends State<Personal_Page> {
 
   void saveNewTask() {
     setState(() {
-      db.toDoList.add([_controler.text, false]);
+      db.toDoList.add([_controler.text, false, 1]);
       _controler.clear();
     });
     Navigator.of(context).pop();
