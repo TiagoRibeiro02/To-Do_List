@@ -12,7 +12,6 @@ class Personal_Page extends StatefulWidget {
 }
 
 class _Personal_PageState extends State<Personal_Page> {
-
   //reference the hive box
   final _mybox = Hive.box('mybox');
   ToDoDataBase db = ToDoDataBase();
@@ -20,16 +19,16 @@ class _Personal_PageState extends State<Personal_Page> {
   @override
   void initState() {
     // fist timne opening app create default data
-    if(_mybox.get('TODOLIST') == null) {
+    if (_mybox.get('TODOLIST') == null) {
       db.createInitialData();
-    }else{
+      db.getLength();
+    } else {
       db.loadData();
+      db.getLength();
     }
-
 
     super.initState();
   }
-
 
   //text controller
   final _controler = TextEditingController();
@@ -40,6 +39,7 @@ class _Personal_PageState extends State<Personal_Page> {
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateDB();
+    db.getLength();
   }
 
   void saveNewTask() {
@@ -49,21 +49,20 @@ class _Personal_PageState extends State<Personal_Page> {
     });
     Navigator.of(context).pop();
     db.updateDB();
+    db.getLength();
   }
 
-
-
   void createNewTask() {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return DialogBox(
-              controller: _controler,
-              onSave: saveNewTask,
-              onCancel: () => Navigator.of(context).pop(),
-            );
-          },
-      );
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogBox(
+          controller: _controler,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
+        );
+      },
+    );
   }
 
   void deleteTask(int index) {
@@ -71,6 +70,7 @@ class _Personal_PageState extends State<Personal_Page> {
       db.toDoList.removeAt(index);
     });
     db.updateDB();
+    db.getLength();
   }
 
   @override
@@ -85,16 +85,15 @@ class _Personal_PageState extends State<Personal_Page> {
         child: Icon(Icons.add),
       ),
       body: ListView.builder(
-        itemCount: db.toDoList.length,
+        itemCount: db.lengthCount,
         itemBuilder: (context, index) {
-          return ToDoTile(
+            return ToDoTile(
               taskName: db.toDoList[index][0],
               taskCompleted: db.toDoList[index][1],
               onChange: (value) => checkBoxChanged(value, index),
-              deleteFunction: (context) => deleteTask(index) ,
-          );
+              deleteFunction: (context) => deleteTask(index),
+            );
         },
-
       ),
     );
   }
