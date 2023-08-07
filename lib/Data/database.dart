@@ -7,7 +7,6 @@ class ToDoDataBase{
   });
 
   List toDoList = [];
-  int lengthCount = 2;
 
 
   //run this if its the first time running this app
