@@ -13,18 +13,16 @@ class HomeList_Page extends StatefulWidget {
 
 class _HomeList_PageState extends State<HomeList_Page> {
   //reference the hive box
-  final _mybox = Hive.box('mybox');
-  ToDoDataBase db = ToDoDataBase();
+  final _mybox = Hive.box('mybox2');
+  ToDoDataBase db = ToDoDataBase(box: 'mybox2');
 
   @override
   void initState() {
     // fist timne opening app create default data
     if(_mybox.get('TODOLIST') == null) {
       db.createInitialData();
-      db.getLength();
     }else{
       db.loadData();
-      db.getLength();
     }
 
 
@@ -41,7 +39,6 @@ class _HomeList_PageState extends State<HomeList_Page> {
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateDB();
-    db.getLength();
   }
 
   void saveNewTask() {
@@ -51,7 +48,6 @@ class _HomeList_PageState extends State<HomeList_Page> {
     });
     Navigator.of(context).pop();
     db.updateDB();
-    db.getLength();
   }
 
 
@@ -74,7 +70,6 @@ class _HomeList_PageState extends State<HomeList_Page> {
       db.toDoList.removeAt(index);
     });
     db.updateDB();
-    db.getLength();
   }
 
   @override
@@ -89,7 +84,7 @@ class _HomeList_PageState extends State<HomeList_Page> {
         child: Icon(Icons.add),
       ),
       body: ListView.builder(
-        itemCount: db.lengthCount,
+        itemCount: db.toDoList.length,
         itemBuilder: (context, index) {
             return ToDoTile(
               taskName: db.toDoList[index][0],

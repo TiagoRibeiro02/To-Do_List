@@ -13,18 +13,16 @@ class Personal_Page extends StatefulWidget {
 
 class _Personal_PageState extends State<Personal_Page> {
   //reference the hive box
-  final _mybox = Hive.box('mybox');
-  ToDoDataBase db = ToDoDataBase();
+  final _mybox = Hive.box('mybox1');
+  ToDoDataBase db = ToDoDataBase(box: 'mybox1');
 
   @override
   void initState() {
     // fist timne opening app create default data
     if (_mybox.get('TODOLIST') == null) {
       db.createInitialData();
-      db.getLength();
     } else {
       db.loadData();
-      db.getLength();
     }
 
     super.initState();
@@ -39,7 +37,6 @@ class _Personal_PageState extends State<Personal_Page> {
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateDB();
-    db.getLength();
   }
 
   void saveNewTask() {
@@ -49,7 +46,6 @@ class _Personal_PageState extends State<Personal_Page> {
     });
     Navigator.of(context).pop();
     db.updateDB();
-    db.getLength();
   }
 
   void createNewTask() {
@@ -70,7 +66,6 @@ class _Personal_PageState extends State<Personal_Page> {
       db.toDoList.removeAt(index);
     });
     db.updateDB();
-    db.getLength();
   }
 
   @override
@@ -85,7 +80,7 @@ class _Personal_PageState extends State<Personal_Page> {
         child: Icon(Icons.add),
       ),
       body: ListView.builder(
-        itemCount: db.lengthCount,
+        itemCount: db.toDoList.length,
         itemBuilder: (context, index) {
             return ToDoTile(
               taskName: db.toDoList[index][0],

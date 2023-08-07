@@ -19,7 +19,9 @@ main() async {
   await Hive.initFlutter();
 
   //open a box
-  var box = await Hive.openBox('mybox');
+  var box1 = await Hive.openBox('mybox1');
+  var box2 = await Hive.openBox('mybox2');
+  var box3 = await Hive.openBox('mybox3');
 
   runApp(
     MaterialApp(
