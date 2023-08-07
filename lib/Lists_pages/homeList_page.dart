@@ -43,7 +43,7 @@ class _HomeList_PageState extends State<HomeList_Page> {
 
   void saveNewTask() {
     setState(() {
-      db.toDoList.add([_controler.text, false, 1]);
+      db.toDoList.add([_controler.text, false, 2]);
       _controler.clear();
     });
     Navigator.of(context).pop();
