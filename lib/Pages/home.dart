@@ -13,7 +13,7 @@ class home_page extends StatefulWidget {
 
 class _home_pageState extends State<home_page> {
 
-  String username = 'Tiago';
+  String username = 'User';
   int tasks = 10;
   Color? backgroundColor = Colors.white;
   int _colorNumber = 0;

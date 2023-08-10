@@ -16,6 +16,8 @@ class _Personal_PageState extends State<Personal_Page> {
   final _mybox = Hive.box('mybox1');
   ToDoDataBase db = ToDoDataBase(box: 'mybox1');
 
+  int taskCount = 0;
+
   @override
   void initState() {
     // fist timne opening app create default data
@@ -81,6 +83,52 @@ class _Personal_PageState extends State<Personal_Page> {
       ),
       body: Column(
         children: [
+          Container(
+            padding: EdgeInsets.fromLTRB(25, 25, 0, 0),
+            child: Column(
+              children: [
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Hero(
+                      tag: 'IconPersonal',
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.red[300],
+                      ),
+                    )
+                ),
+                SizedBox(height: 40.0,),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          '$taskCount Tasks',  //TODO depois o tipo de tasks
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey.withOpacity(0.6),
+
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Personal',
+                          style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.grey[850]
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: db.toDoList.length,
