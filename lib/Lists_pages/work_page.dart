@@ -76,7 +76,14 @@ class _Work_PageState extends State<Work_Page> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Personal'),
+        title: Text('Work'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              db.updateDB();
+              Navigator.of(context).pop();
+            }
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,

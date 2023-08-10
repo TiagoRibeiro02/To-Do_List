@@ -18,7 +18,7 @@ class _Personal_PageState extends State<Personal_Page> {
 
   @override
   void initState() {
-    //fist timne opening app create default data
+    //fist time opening app create default data
     if (_mybox.get('TODOLIST') == null) {
       db.createInitialData();
     } else {
@@ -82,6 +82,13 @@ class _Personal_PageState extends State<Personal_Page> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Personal'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            db.updateDB();
+            Navigator.pop(context);
+          }
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,

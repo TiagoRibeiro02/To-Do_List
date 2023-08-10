@@ -77,7 +77,14 @@ class _HomeList_PageState extends State<HomeList_Page> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Personal'),
+        title: Text('Home'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              db.updateDB();
+              Navigator.of(context).pop();
+            }
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,

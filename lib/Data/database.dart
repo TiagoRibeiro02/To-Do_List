@@ -7,7 +7,7 @@ class ToDoDataBase{
   });
 
   List toDoList = [];
-  int taskCount = 0;
+  int taskCount = 2;
 
 
   //run this if its the first time running this app
@@ -28,6 +28,10 @@ class ToDoDataBase{
   //update db
   void updateDB() {
     Hive.box(box).put('TODOLIST', toDoList);
+    Hive.box(box).put('COUNTASK', taskCount);
+  }
+
+  void initCount() {
     Hive.box(box).put('COUNTASK', taskCount);
   }
 }

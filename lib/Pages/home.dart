@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:todo_list/Data/database.dart';
 import 'package:todo_list/Lists_pages/homeList_page.dart';
 import 'package:todo_list/Lists_pages/personal_page.dart';
 
@@ -18,6 +20,41 @@ class _home_pageState extends State<home_page> {
   Color? backgroundColor = Colors.white;
   int _colorNumber = 0;
 
+  //Personal
+  final _mybox1 = Hive.box('mybox1');
+  ToDoDataBase db1 = ToDoDataBase(box: 'mybox1');
+
+  //Home
+  final _mybox2 = Hive.box('mybox2');
+  ToDoDataBase db2 = ToDoDataBase(box: 'mybox2');
+
+  //Work
+  final _mybox3 = Hive.box('mybox3');
+  ToDoDataBase db3 = ToDoDataBase(box: 'mybox3');
+
+  @override
+  void initState() {
+    //fist time opening app create default data
+    if (_mybox1.get('TODOLIST') == null) {
+      db1.initCount();
+    } else {
+      db1.loadData();
+    }
+
+    if (_mybox2.get('TODOLIST') == null) {
+      db2.initCount();
+    } else {
+      db2.loadData();
+    }
+
+    if (_mybox3.get('TODOLIST') == null) {
+      db3.initCount();
+    } else {
+      db3.loadData();
+    }
+    super.initState();
+  }
+
 
 
   Color? changebgColor() {
@@ -32,7 +69,11 @@ class _home_pageState extends State<home_page> {
 
 
   Widget buildTaskCategory(int i) {
+    db1.loadData();
+    db3.loadData();
+    db2.loadData();
     if (i == 1) {
+      //db1.loadData();
       return GestureDetector(
         onTap: () {Navigator.pushNamed(context, '/personal_pages');},
         child: Container(
@@ -63,7 +104,7 @@ class _home_pageState extends State<home_page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '$tasks Tasks',  //TODO depois o tipo de tasks
+                          '${db1.taskCount} Tasks',
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
@@ -90,6 +131,7 @@ class _home_pageState extends State<home_page> {
       );
 
     } else if (i == 2){
+      //db3.loadData();
       return GestureDetector(
         onTap: () {Navigator.pushNamed(context, '/work_page');},
         child: Container(
@@ -123,7 +165,7 @@ class _home_pageState extends State<home_page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '$tasks Tasks',  //TODO depois o tipo de tasks
+                          '${db3.taskCount} Tasks',  //TODO depois o tipo de tasks
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
@@ -149,6 +191,7 @@ class _home_pageState extends State<home_page> {
         ),
       );
     } else {
+      //db2.loadData();
       return GestureDetector(
         onTap: () {Navigator.pushNamed(context, '/homeList_Page');},
         child: Container(
@@ -182,7 +225,7 @@ class _home_pageState extends State<home_page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '$tasks Tasks',  //TODO depois o tipo de tasks
+                          '${db2.taskCount} Tasks',  //TODO depois o tipo de tasks
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
