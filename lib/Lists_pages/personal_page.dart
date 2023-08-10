@@ -16,17 +16,14 @@ class _Personal_PageState extends State<Personal_Page> {
   final _mybox = Hive.box('mybox1');
   ToDoDataBase db = ToDoDataBase(box: 'mybox1');
 
-  int taskCount = 0;
-
   @override
   void initState() {
-    // fist timne opening app create default data
+    //fist timne opening app create default data
     if (_mybox.get('TODOLIST') == null) {
       db.createInitialData();
     } else {
       db.loadData();
     }
-
     super.initState();
   }
 
@@ -36,6 +33,11 @@ class _Personal_PageState extends State<Personal_Page> {
   //check box tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
+      if(db.toDoList[index][1] == false){
+        db.taskCount -= 1;
+      } else {
+        db.taskCount += 1;
+      }
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateDB();
@@ -44,6 +46,7 @@ class _Personal_PageState extends State<Personal_Page> {
   void saveNewTask() {
     setState(() {
       db.toDoList.add([_controler.text, false, 1]);
+      db.taskCount += 1;
       _controler.clear();
     });
     Navigator.of(context).pop();
@@ -65,6 +68,9 @@ class _Personal_PageState extends State<Personal_Page> {
 
   void deleteTask(int index) {
     setState(() {
+      if(db.toDoList[index][1] == false){
+        db.taskCount -= 1;
+      }
       db.toDoList.removeAt(index);
     });
     db.updateDB();
@@ -105,7 +111,7 @@ class _Personal_PageState extends State<Personal_Page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '$taskCount Tasks',  //TODO depois o tipo de tasks
+                          '${db.taskCount} Tasks',  //TODO depois o tipo de tasks
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
