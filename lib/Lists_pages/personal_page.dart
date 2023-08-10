@@ -85,7 +85,7 @@ class _Personal_PageState extends State<Personal_Page> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            db.updateDB();
+            db.loadData();
             Navigator.pop(context);
           }
         ),

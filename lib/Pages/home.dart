@@ -16,7 +16,7 @@ class home_page extends StatefulWidget {
 class _home_pageState extends State<home_page> {
 
   String username = 'User';
-  int tasks = 10;
+  int tasks = 0;
   Color? backgroundColor = Colors.white;
   int _colorNumber = 0;
 
@@ -52,6 +52,8 @@ class _home_pageState extends State<home_page> {
     } else {
       db3.loadData();
     }
+
+    tasks = db1.taskCount + db2.taskCount + db3.taskCount;
     super.initState();
   }
 
@@ -69,13 +71,14 @@ class _home_pageState extends State<home_page> {
 
 
   Widget buildTaskCategory(int i) {
-    db1.loadData();
-    db3.loadData();
-    db2.loadData();
+    // db1.loadData();
+    // db3.loadData();
+    // db2.loadData();
+    // tasks = db1.taskCount + db2.taskCount + db3.taskCount;
     if (i == 1) {
       //db1.loadData();
       return GestureDetector(
-        onTap: () {Navigator.pushNamed(context, '/personal_pages');},
+        onTap: () {Navigator.pushNamed(context, '/personal_pages').whenComplete(() => setState(() {db1.loadData();}));},
         child: Container(
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.symmetric(horizontal: 5.0),
@@ -133,7 +136,7 @@ class _home_pageState extends State<home_page> {
     } else if (i == 2){
       //db3.loadData();
       return GestureDetector(
-        onTap: () {Navigator.pushNamed(context, '/work_page');},
+        onTap: () {Navigator.pushNamed(context, '/work_page').whenComplete(() => setState(() {db3.loadData();}));},
         child: Container(
             width: MediaQuery
                 .of(context)
@@ -165,7 +168,7 @@ class _home_pageState extends State<home_page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '${db3.taskCount} Tasks',  //TODO depois o tipo de tasks
+                          '${db3.taskCount} Tasks',
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
@@ -193,7 +196,7 @@ class _home_pageState extends State<home_page> {
     } else {
       //db2.loadData();
       return GestureDetector(
-        onTap: () {Navigator.pushNamed(context, '/homeList_Page');},
+        onTap: () {Navigator.pushNamed(context, '/homeList_Page').whenComplete(() => setState(() {db2.loadData();}));},
         child: Container(
             width: MediaQuery
                 .of(context)
@@ -225,7 +228,7 @@ class _home_pageState extends State<home_page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '${db2.taskCount} Tasks',  //TODO depois o tipo de tasks
+                          '${db2.taskCount} Tasks',  
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
@@ -257,6 +260,11 @@ class _home_pageState extends State<home_page> {
 
   @override
   build(BuildContext context) {
+    print('load');
+    db1.loadData();
+    db3.loadData();
+    db2.loadData();
+    tasks = db1.taskCount + db2.taskCount + db3.taskCount;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
