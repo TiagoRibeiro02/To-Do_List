@@ -228,7 +228,7 @@ class _home_pageState extends State<home_page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '${db2.taskCount} Tasks',  
+                          '${db2.taskCount} Tasks',
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),
