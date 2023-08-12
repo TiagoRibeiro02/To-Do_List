@@ -36,6 +36,11 @@ class _HomeList_PageState extends State<HomeList_Page> {
   //check box tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
+      if(db.toDoList[index][1] == false){
+        db.taskCount -= 1;
+      } else {
+        db.taskCount += 1;
+      }
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateDB();
@@ -43,14 +48,13 @@ class _HomeList_PageState extends State<HomeList_Page> {
 
   void saveNewTask() {
     setState(() {
-      db.toDoList.add([_controler.text, false, 2]);
+      db.toDoList.add([_controler.text, false, 1]);
+      db.taskCount += 1;
       _controler.clear();
     });
     Navigator.of(context).pop();
     db.updateDB();
   }
-
-
 
   void createNewTask() {
     showDialog(
@@ -67,6 +71,9 @@ class _HomeList_PageState extends State<HomeList_Page> {
 
   void deleteTask(int index) {
     setState(() {
+      if(db.toDoList[index][1] == false){
+        db.taskCount -= 1;
+      }
       db.toDoList.removeAt(index);
     });
     db.updateDB();
@@ -90,17 +97,68 @@ class _HomeList_PageState extends State<HomeList_Page> {
         onPressed: createNewTask,
         child: Icon(Icons.add),
       ),
-      body: ListView.builder(
-        itemCount: db.toDoList.length,
-        itemBuilder: (context, index) {
-            return ToDoTile(
-              taskName: db.toDoList[index][0],
-              taskCompleted: db.toDoList[index][1],
-              onChange: (value) => checkBoxChanged(value, index),
-              deleteFunction: (context) => deleteTask(index),
-            );
-        },
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.fromLTRB(25, 25, 0, 0),
+            child: Column(
+              children: [
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Hero(
+                      tag: 'iconHome',
+                      child: Icon(
+                        Icons.home,
+                        color: Colors.green[300],
+                      ),
+                    )
+                ),
+                SizedBox(height: 40.0,),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          '${db.taskCount} Tasks',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey.withOpacity(0.6),
 
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Home',
+                          style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.grey[850]
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: db.toDoList.length,
+              itemBuilder: (context, index) {
+                return ToDoTile(
+                  taskName: db.toDoList[index][0],
+                  taskCompleted: db.toDoList[index][1],
+                  onChange: (value) => checkBoxChanged(value, index),
+                  deleteFunction: (context) => deleteTask(index),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

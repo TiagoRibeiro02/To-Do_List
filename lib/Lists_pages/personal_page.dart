@@ -118,7 +118,7 @@ class _Personal_PageState extends State<Personal_Page> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          '${db.taskCount} Tasks',  //TODO depois o tipo de tasks
+                          '${db.taskCount} Tasks',
                           style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.grey.withOpacity(0.6),

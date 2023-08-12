@@ -34,7 +34,7 @@ class _home_pageState extends State<home_page> {
 
   @override
   void initState() {
-    //fist time opening app create default data
+    //fist time opening app create default task count
     if (_mybox1.get('TODOLIST') == null) {
       db1.initCount();
     } else {
@@ -71,12 +71,7 @@ class _home_pageState extends State<home_page> {
 
 
   Widget buildTaskCategory(int i) {
-    // db1.loadData();
-    // db3.loadData();
-    // db2.loadData();
-    // tasks = db1.taskCount + db2.taskCount + db3.taskCount;
     if (i == 1) {
-      //db1.loadData();
       return GestureDetector(
         onTap: () {Navigator.pushNamed(context, '/personal_pages').whenComplete(() => setState(() {db1.loadData();}));},
         child: Container(
@@ -134,7 +129,6 @@ class _home_pageState extends State<home_page> {
       );
 
     } else if (i == 2){
-      //db3.loadData();
       return GestureDetector(
         onTap: () {Navigator.pushNamed(context, '/work_page').whenComplete(() => setState(() {db3.loadData();}));},
         child: Container(
@@ -194,7 +188,6 @@ class _home_pageState extends State<home_page> {
         ),
       );
     } else {
-      //db2.loadData();
       return GestureDetector(
         onTap: () {Navigator.pushNamed(context, '/homeList_Page').whenComplete(() => setState(() {db2.loadData();}));},
         child: Container(
@@ -479,11 +472,8 @@ class _home_pageState extends State<home_page> {
                       ],
                     ),
                   ),
-
                 ],
               ),
-
-
             ),
           ),
 
