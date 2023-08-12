@@ -25,7 +25,6 @@ class _HomeList_PageState extends State<HomeList_Page> {
       db.loadData();
     }
 
-
     super.initState();
   }
 
